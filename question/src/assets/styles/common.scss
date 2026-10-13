@@ -1,0 +1,133 @@
+// 公共类文件
+// 字体大小100-900类名
+@for $i from 1 through 9 {
+  .font-weight-#{$i}00 {
+    font-weight: #{$i}00;
+  }
+}
+
+// 四个方向
+$directions: (
+  "t": "top",
+  "l": "left",
+  "r": "right",
+  "b": "bottom",
+);
+// 分别四个方向的 margin、padding
+@each $direction, $property in $directions {
+  @each $size in 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 {
+    .m#{$direction}-#{$size} {
+      margin-#{$property}: #{$size}px;
+    }
+    .p#{$direction}-#{$size} {
+      padding-#{$property}: #{$size}px;
+    }
+  }
+}
+
+// 同时四个方向的 margin、padding
+@each $size in 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 {
+  .p#{$size} {
+    padding: #{$size}px;
+  }
+  .m#{$size} {
+    padding: #{$size}px;
+  }
+}
+
+// 分别四个方向的边框
+@each $direction, $property in $directions {
+  @each $size in 1, 2, 3 {
+    .b#{$direction}-#{$size} {
+      border-#{$property}: #{$size}px solid var(--border-color);
+    }
+  }
+}
+
+// 同时四个方向的边框
+@each $size in 1, 2, 3 {
+  .b#{$size} {
+    border: #{$size}px solid var(--border-color);
+  }
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.p0 {
+  padding: 0;
+}
+
+.mc {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.self-start {
+  align-items: self-start;
+}
+
+.self-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.select {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}

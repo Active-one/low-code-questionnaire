@@ -1,0 +1,15 @@
+.link-item {
+  display: block;
+  width: 80px;
+  height: 30px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-base);
+  line-height: 30px;
+  margin-bottom: 15px;
+  &:hover,
+  &.active {
+    background-color: var(--font-color-lighter);
+    color: var(--white);
+  }
+}
