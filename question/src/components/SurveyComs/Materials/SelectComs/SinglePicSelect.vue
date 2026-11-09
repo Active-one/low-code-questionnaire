@@ -27,7 +27,12 @@
           :key="index"
           :value="item.picTitle"
         >
-          <PicUploadItem class="mb-10" v-bind="{ ...item }" :index />
+          <PicUploadItem
+            class="mb-10"
+            v-bind="{ ...item }"
+            :index
+            @selectCurrentCom="selectCurrentCom"
+          />
         </el-radio>
       </el-radio-group>
     </div>
@@ -37,18 +42,19 @@
 <script lang="ts" setup>
 import PicUploadItem from '../../Common/PicUploadItem.vue';
 import MaterialsHeader from '@/components/SurveyComs/Common/MaterialsHeader.vue';
-import type { OptionsStatus } from '@/types';
+import type { OptionsStatus, SelectCurrentComType } from '@/types';
 import {
   getArrCurrentStatus,
   getStringArrStatusByCurrentStatus,
   getStringTextStatus,
   getAPicTitleOrDescValueObjStatus,
 } from '@/utils';
-import { computed, ref } from 'vue';
+import { computed, inject, ref } from 'vue';
 
 const props = defineProps<{
   serialNum: number;
   status: OptionsStatus;
+  comIndex: number; // 该组件在仓库的coms中的索引
 }>();
 const emits = defineEmits(['get-answer']);
 
@@ -70,6 +76,15 @@ const statusInfo = computed(() => ({
   titleColor: getStringTextStatus(props.status.titleColor),
   descColor: getStringTextStatus(props.status.descColor),
 }));
+
+const selectComByIndex = inject<SelectCurrentComType>('selectComByIndex');
+
+// 给子类的用于选中当前题目为编辑状态的自定义事件处理器
+const selectCurrentCom = () => {
+  if (selectComByIndex) {
+    selectComByIndex(props.comIndex);
+  }
+};
 </script>
 
 <style scoped lang="scss">

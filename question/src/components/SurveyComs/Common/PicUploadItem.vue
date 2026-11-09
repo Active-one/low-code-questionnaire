@@ -42,12 +42,17 @@ const props = defineProps({
   value: String,
   index: Number,
 });
+const emits = defineEmits(['selectCurrentCom']);
+
 // 图片前缀
-const imageUrl = 'http://localhost:3000';
+const imageUrl = 'http://localhost:3001';
 const getPicLink: GetPicLinkType = inject('getPicLink', () => {});
 
 // 图片上传前
 const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
+  // 如果该上传图片组件所在的题目组件不是编辑状态，就修改为编辑状态
+  emits('selectCurrentCom');
+
   if (rawFile.size / 1024 / 1024 > 2) {
     ElMessage.error('图片大小不能超过 2MB!');
     return false;

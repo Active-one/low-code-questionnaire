@@ -84,8 +84,8 @@ const addOption = () => {
   let newOptionNum = parseInt(lastOption.picTitle.slice(lastOption.picTitle.length - 1)) + 1;
   // 转换失败就重新从1开始
   if (isNaN(newOptionNum)) newOptionNum = 1;
-  // 更新仓库中的数据
 
+  // 更新仓库中的数据
   updateStatus(props.configKey, {
     picTitle: `新增图片标题${newOptionNum}`,
     picDesc: `新增图片描述${newOptionNum}`,

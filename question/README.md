@@ -15,4 +15,4 @@ npm run lint     # ESLint 检查并修复
 
 - 题型与配置项的映射表在 `src/configs/`，新增题型从这里开始
 - 编辑器的渲染完全由「状态对象」驱动，详见根目录 README 的「技术亮点」
-- 后端位于 `../server`，`/api` 已在 `vite.config.ts` 中代理到 `http://localhost:3000`
+- 后端位于 `../server`，`/api` 已在 `vite.config.ts` 中代理到 `http://localhost:3001`

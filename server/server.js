@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     cb(
       null,
-      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
+      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname),
     );
   },
 });
@@ -66,7 +66,7 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
 // 提供静态资源服务
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// 监听 3000 端口
-app.listen(3000, function () {
+// 监听 3001 端口
+app.listen(3001, function () {
   console.log("服务器已启动...");
 });

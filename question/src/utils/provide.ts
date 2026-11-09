@@ -24,6 +24,7 @@ export const updateStatus = (
   status: Status,
 ) => {
   const materialStore = useMaterialStore() as MaterialStoreType;
+
   // @ts-ignore
   const editStatus = status.status[configKey];
 

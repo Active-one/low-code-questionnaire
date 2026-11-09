@@ -9,7 +9,12 @@
           @click="selectCom(index)"
           :ref="(el) => (surveyComRefs[index] = el)"
         >
-          <component :is="element.type" :serialNum="materialNo[index]" :status="element.status" />
+          <component
+            :is="element.type"
+            :serialNum="materialNo[index]"
+            :status="element.status"
+            :comIndex="index"
+          />
           <!-- 删除按钮 -->
           <div class="delete-btn" @click.stop="deleteCom(index)">
             <el-button
@@ -61,8 +66,6 @@ const dragstart = () => {
 };
 // 删除对应题目
 const deleteCom = (index: number) => {
-  console.log('点击button');
-
   ElMessageBox.confirm('确定要删除该题目吗？', '删除提示', {
     type: 'warning',
   })

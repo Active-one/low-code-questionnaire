@@ -34,6 +34,7 @@ const setDefultComs = () => {
 
   return [titleCom, descCom];
 };
+
 export const useEditorStore = defineStore('editor', () => {
   // 当前选中组件的索引
   const currentSelectComIndex = ref(-1);

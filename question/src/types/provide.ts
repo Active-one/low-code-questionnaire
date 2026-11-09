@@ -6,3 +6,5 @@ export type UpdateStatusType = (
 ) => void;
 
 export type GetPicLinkType = (picInfo: PicLinkObj) => void;
+
+export type SelectCurrentComType = (index: number) => void;

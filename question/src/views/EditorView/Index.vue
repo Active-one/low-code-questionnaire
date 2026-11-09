@@ -51,6 +51,13 @@ provide(
 );
 // 得到上传的图片信息后，手动调用updateStatus，去修改仓库中的数据
 provide('getPicLink', (picInfo: PicLinkObj) => getPicLink(picInfo, editorStore.currentCom!));
+
+// 为后代组件提供选中该后代组件的方法（创建问卷页面，使该后代组件为编辑状态）
+provide('selectComByIndex', (index: number) => {
+  if (editorStore.currentSelectComIndex === -1) {
+    editorStore.setCurrentSelectComIndex(index);
+  }
+});
 </script>
 
 <style scoped lang="scss">
