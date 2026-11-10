@@ -66,6 +66,15 @@ app.post("/api/upload", upload.single("image"), (req, res) => {
 // 提供静态资源服务
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+// 托管前端打包产物（dist 目录）
+app.use(express.static(path.join(__dirname, "dist")));
+
+// SPA 路由回退：刷新页面时返回 index.html（排除 /api 接口）
+app.get("*", (req, res, next) => {
+  if (req.url.startsWith("/api")) return next();
+  res.sendFile(path.join(__dirname, "dist/index.html"));
+});
+
 // 监听 3001 端口
 app.listen(3001, function () {
   console.log("服务器已启动...");

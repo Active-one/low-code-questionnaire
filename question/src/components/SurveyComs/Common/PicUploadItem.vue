@@ -45,7 +45,7 @@ const props = defineProps({
 const emits = defineEmits(['selectCurrentCom']);
 
 // 图片前缀
-const imageUrl = 'http://localhost:3001';
+const imageUrl = import.meta.env.PROD ? '' : 'http://localhost:3001';
 const getPicLink: GetPicLinkType = inject('getPicLink', () => {});
 
 // 图片上传前
